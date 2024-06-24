@@ -1,5 +1,3 @@
-import { ENV } from "@/config";
-
 export const corsConfig = {
   origin: function (origin, callback) {
     return callback(null, true);
