@@ -2,6 +2,8 @@ import express from "express";
 import { Logger } from "./logger";
 import { UPLOADS_PATH } from "./env.config";
 import { appRouter } from "@/interfaces/routers";
+import cors from "cors";
+import { corsConfig } from "@/interfaces/middleware";
 
 export type AppConfig = {
   port?: number | string;
@@ -14,6 +16,8 @@ export class Server {
   constructor(config: AppConfig) {
     this.config = config;
     this.app = express();
+
+    this.app.use(cors(corsConfig));
 
     this.app.use("/api/uploads", express.static(UPLOADS_PATH));
 
