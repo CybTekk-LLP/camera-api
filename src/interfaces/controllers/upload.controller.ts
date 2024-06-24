@@ -33,11 +33,6 @@ export class UploadsController {
       });
       await s3.send(command)
     }
-    // @ts-ignore
-    console.log(req.files);
-    const params = {
-      Bucket: AWS_S3_BUCKET_NAME,
-    };
 
     res.json({ uri: urls });
   };

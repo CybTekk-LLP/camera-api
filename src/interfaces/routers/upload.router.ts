@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { UploadsController } from "../controllers";
-import { uploadGallery, uploadImage } from "@/application/services";
+import { uploadGallery } from "@/application/services";
 
 const router = Router();
 
