@@ -2,7 +2,13 @@ import multer from "multer";
 import path from "path";
 import { PathLike } from "fs";
 import { promises as fs } from "fs";
-import { UPLOADS_PATH } from "@/config";
+import {
+  AWS_S3_BUCKET_ACCESS_KEY,
+  AWS_S3_BUCKET_ACCESS_SECRET,
+  AWS_S3_BUCKET_REGION,
+  UPLOADS_PATH,
+} from "@/config";
+
 
 async function createDirIfNotExists(directory: PathLike) {
   fs.access(directory).catch(() => {
