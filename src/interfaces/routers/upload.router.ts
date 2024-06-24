@@ -1,19 +1,10 @@
-import {
-  uplaodVideo,
-  uploadGallery,
-  uploadImage,
-  uploadPdfFile,
-} from "@/application/services";
 import { Router } from "express";
 import { UploadsController } from "../controllers";
+import { uploadGallery, uploadImage } from "@/application/services";
 
 const router = Router();
 
 const uploadController = new UploadsController();
-
-router
-  .route("/images")
-  .post(uploadImage.single("image"), uploadController.handleNewImageUpload);
 
 router
   .route("/gallery")
@@ -21,11 +12,5 @@ router
     uploadGallery.array("gallery", 10),
     uploadController.handleGalleryUpload
   );
-router
-  .route("/files")
-  .post(uploadPdfFile.single("file"), uploadController.handleNewFileUpload);
-router
-  .route("/videos")
-  .post(uplaodVideo.single("video"), uploadController.handleNewVideoUpload);
 
 export default router;
