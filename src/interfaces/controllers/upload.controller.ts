@@ -33,7 +33,6 @@ export class UploadsController {
       });
       await s3.send(command)
     }
-
     res.json({ uri: urls });
   };
 }
