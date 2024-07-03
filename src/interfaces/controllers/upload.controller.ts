@@ -6,6 +6,7 @@ import {
   AWS_S3_BUCKET_ACCESS_SECRET,
   AWS_S3_BUCKET_NAME,
 } from "@/config/env.config";
+import { EmailService } from "@/application/services";
 
 export const s3 = new S3Client({
   region: AWS_S3_BUCKET_REGION,
@@ -16,6 +17,9 @@ export const s3 = new S3Client({
 });
 
 export class UploadsController {
+  constructor(private emailService?: EmailService) {
+    this.emailService = emailService;
+  }
   handleGalleryUpload = async (req: Request, res: Response) => {
     const urls = [];
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -31,8 +35,13 @@ export class UploadsController {
         Body: file.buffer,
         ContentType: file.mimetype,
       });
-      await s3.send(command)
+      await s3.send(command);
     }
     res.json({ uri: urls });
+  };
+  handleEmailImage = async (req: Request, res: Response) => {
+    console.log(req.body);
+    // await this.emailService.uploadImage(req.query.imageurl);
+    res.status(200).send("Image uploaded");
   };
 }
