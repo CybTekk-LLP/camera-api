@@ -40,8 +40,7 @@ export class UploadsController {
     res.json({ uri: urls });
   };
   handleEmailImage = async (req: Request, res: Response) => {
-    console.log(req.body);
-    // await this.emailService.uploadImage(req.query.imageurl);
+    await this.emailService.uploadImage(req.query.imageurl);
     res.status(200).send("Image uploaded");
   };
 }
