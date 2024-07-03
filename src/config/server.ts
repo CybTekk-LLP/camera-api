@@ -17,6 +17,7 @@ export class Server {
     this.config = config;
     this.app = express();
 
+    this.app.use(express.json({ limit: "10mb" }));
     this.app.use(cors(corsConfig));
 
     this.app.use("/api/uploads", express.static(UPLOADS_PATH));

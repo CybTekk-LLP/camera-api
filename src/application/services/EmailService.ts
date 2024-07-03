@@ -10,7 +10,6 @@ import fetch from "node-fetch";
 
 export class EmailService {
   async uploadImage(imageURL) {
-    console.log(imageURL);
     const url = "https://a.klaviyo.com/api/images/";
     const options = {
       method: "POST",
@@ -24,17 +23,15 @@ export class EmailService {
         data: {
           type: "image",
           attributes: {
-            import_from_url: imageURL,
+            import_from_url: `${imageURL}`,
             hidden: false,
           },
         },
       }),
     };
 
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.error("error:" + err));
+    const data = await fetch(url, options);
+    return await data.json();
   }
   async sendEmail(recipientEmail: string, imageURL: string) {
     const url = "https://a.klaviyo.com/api/events/";
