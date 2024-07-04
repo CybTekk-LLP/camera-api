@@ -17,4 +17,5 @@ export const {
   UPLOADS_PATH,
   ALLOWED_ORIGINS,
   PUBLIC_BASE_URI,
+  KLAVIYO_PRIVATE_API_KEY,
 } = process.env;

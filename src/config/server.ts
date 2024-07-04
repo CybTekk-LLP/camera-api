@@ -17,6 +17,7 @@ export class Server {
     this.config = config;
     this.app = express();
 
+    this.app.use(express.json({ limit: "10mb" }));
     this.app.use(cors(corsConfig));
 
     this.app.use("/api/uploads", express.static(UPLOADS_PATH));
@@ -28,7 +29,6 @@ export class Server {
     const port = this.config.port ?? 1209;
     this.app.listen(port, () => {
       Logger.info(`🚀: Server started on http://localhost:` + port);
-      Logger.info(`📝: Serving docs on http://localhost:${port}/api/docs`);
     });
   }
 }
