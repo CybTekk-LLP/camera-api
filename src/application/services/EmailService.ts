@@ -1,6 +1,4 @@
-import {
-  KLAVIYO_PRIVATE_API_KEY,
-} from "@/config";
+import { KLAVIYO_PRIVATE_API_KEY } from "@/config";
 
 import fetch from "node-fetch";
 
@@ -30,6 +28,7 @@ export class EmailService {
     return await data.json();
   }
   async sendEmail(recipientEmail: string, imageURL: string) {
+    console.log("cron triggered");
     const url = "https://a.klaviyo.com/api/events/";
     const options = {
       method: "POST",
