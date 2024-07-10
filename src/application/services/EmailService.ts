@@ -1,8 +1,4 @@
 import {
-  Logger,
-  NODEMAILER_EMAIL,
-  NODEMAILER_PASSWORD,
-  PUBLIC_BASE_URI,
   KLAVIYO_PRIVATE_API_KEY,
 } from "@/config";
 

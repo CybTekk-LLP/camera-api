@@ -6,5 +6,7 @@ const router = Router();
 
 const emailService = new EmailService();
 const emailController = new EmailController(emailService);
+
 router.route("/").post(emailController.sendEmail);
+
 export default router;
