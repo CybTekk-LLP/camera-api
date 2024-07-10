@@ -5,6 +5,7 @@ import { appRouter } from "@/interfaces/routers";
 import cors from "cors";
 import { corsConfig } from "@/interfaces/middleware";
 import { AppDataSource } from "@/infrastructure";
+import { initCronSchedule } from "@/interfaces/utils";
 
 export type AppConfig = {
   port?: number | string;
@@ -29,6 +30,7 @@ export class Server {
     AppDataSource.initialize()
       .then(() => {
         Logger.info("🤠: Database connection instantiated");
+        initCronSchedule();
       })
       .catch((e) => {
         Logger.error(e);

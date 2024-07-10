@@ -5,8 +5,8 @@ export class EmailController {
     this.emailService = emailService;
   }
   sendEmail = async (req: Request, res: Response) => {
-    let email = req.query.email.toString();
-    let imageURL = req.query.imageurl.toString();
+    const email = req.query.email.toString();
+    const imageURL = req.query.imageurl.toString();
     await this.emailService.sendEmail(email, imageURL);
     res.status(200).send("Email sent successfully");
   };
