@@ -5,7 +5,8 @@ import { appRouter } from "@/interfaces/routers";
 import cors from "cors";
 import { corsConfig } from "@/interfaces/middleware";
 import { AppDataSource } from "@/infrastructure";
-import { initCronSchedule } from "@/interfaces/utils";
+import { EmailService } from "@/application/services";
+import { startEmailCronJob } from "@/interfaces/utils";
 
 export type AppConfig = {
   port?: number | string;
@@ -25,12 +26,18 @@ export class Server {
     this.app.use("/api/uploads", express.static(UPLOADS_PATH));
 
     this.app.use("/api", appRouter);
+    const emailService = new EmailService();
+
+    startEmailCronJob(
+      emailService,
+      "s.gupta@cybtekk.com",
+      "https://d3k81ch9hvuctc.cloudfront.net/company/TWnsJV/images/e9c9c693-0df8-4954-8b6d-47af088b0fd1.jpeg"
+    );
   }
   private connectDatabase() {
     AppDataSource.initialize()
       .then(() => {
         Logger.info("🤠: Database connection instantiated");
-        initCronSchedule();
       })
       .catch((e) => {
         Logger.error(e);

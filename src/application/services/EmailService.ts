@@ -27,9 +27,10 @@ export class EmailService {
     const data = await fetch(url, options);
     return await data.json();
   }
+
   async sendEmail(recipientEmail: string, imageURL: string) {
-    console.log("cron triggered");
     const url = "https://a.klaviyo.com/api/events/";
+
     const options = {
       method: "POST",
       headers: {
@@ -74,7 +75,10 @@ export class EmailService {
     };
     fetch(url, options)
       .then((res) => res.json())
-      .then((json) => JSON.parse(json))
+      .then((json) => {
+        JSON.parse(json);
+        console.log("gvhnmk,km,l");
+      })
       .catch((err) => console.error("error:" + err));
   }
 }
