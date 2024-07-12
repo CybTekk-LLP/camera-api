@@ -7,6 +7,7 @@ import {
   AWS_S3_BUCKET_NAME,
 } from "@/config/env.config";
 import { EmailService } from "@/application/services";
+import { UserService } from "@/application/services/UserService";
 
 export const s3 = new S3Client({
   region: AWS_S3_BUCKET_REGION,
@@ -17,11 +18,19 @@ export const s3 = new S3Client({
 });
 
 export class UploadsController {
-  constructor(private emailService?: EmailService) {
+  constructor(
+    private emailService?: EmailService,
+    private userService?: UserService
+  ) {
     this.emailService = emailService;
+    this.userService = userService;
   }
   handleGalleryUpload = async (req: Request, res: Response) => {
     const urls = [];
+    const email = req.query.email;
+    if (!email) {
+      return res.status(400).json({ error: "Email is required." });
+    }
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (!req.files) throw new Error("400::no file attached");
@@ -37,9 +46,27 @@ export class UploadsController {
       });
       await s3.send(command);
     }
+    try {
+      // Find the user by email
+      const user = await this.userService.getUserByEmail(email);
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found." });
+      }
+
+      const updatedUser = await this.userService.updateUser(user.id, {
+        email: email,
+        images: [...(user.images || []), ...urls],
+      });
+
+      res.json({ urls });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error." });
+    }
     res.json({ uri: urls });
   };
-  
+
   handleEmailImage = async (req: Request, res: Response) => {
     const imageURL = await this.emailService.uploadImage(req.body.imageUrl);
     res.status(200).send(imageURL.data.attributes.image_url);

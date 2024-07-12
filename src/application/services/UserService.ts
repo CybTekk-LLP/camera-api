@@ -9,4 +9,12 @@ export class UserService {
     return images;
   }
 
+  async getUserByEmail(email) {
+    const user = await this.userRepository.findOne({ email: email });
+    return user;
+  }
+  async updateUser(id, userData) {
+    const user = await this.userRepository.findByIdAndUpdate(id, userData);
+    return user;
+  }
 }
