@@ -28,11 +28,11 @@ export class Server {
     this.app.use("/api", appRouter);
     const emailService = new EmailService();
 
-    startEmailCronJob(
-      emailService,
-      "s.gupta@cybtekk.com",
-      "https://d3k81ch9hvuctc.cloudfront.net/company/TWnsJV/images/e9c9c693-0df8-4954-8b6d-47af088b0fd1.jpeg"
-    );
+    // startEmailCronJob(
+    //   emailService,
+    //   "s.gupta@cybtekk.com",
+    //   "https://d3k81ch9hvuctc.cloudfront.net/company/TWnsJV/images/e9c9c693-0df8-4954-8b6d-47af088b0fd1.jpeg"
+    // );
   }
   private connectDatabase() {
     AppDataSource.initialize()
