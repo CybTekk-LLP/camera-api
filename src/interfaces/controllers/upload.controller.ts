@@ -46,21 +46,6 @@ export class UploadsController {
       });
       await s3.send(command);
     }
-
-    // const user = await this.userService.createteUser({
-    //   email: email,
-    //   images: [...urls],
-    // });
-
-    // if (!user) {
-    //   return res.status(404).json({ error: "User not found." });
-    // }
-
-    // const updatedUser = await this.userService.updateUser(user.id, {
-    //   email: email,
-    //   images: [...(user.images || []), ...urls],
-    // });
-
     res.json({ uri: urls });
   };
 

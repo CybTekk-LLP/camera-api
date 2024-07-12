@@ -9,7 +9,7 @@ export class EmailController {
     this.emailService = emailService;
     this.userService = userService;
   }
-  
+
   sendEmail = async (req: Request, res: Response) => {
     const email = req.query.email.toString();
     const imageURL = req.query.imageUrl.toString();
@@ -17,4 +17,5 @@ export class EmailController {
     await this.emailService.sendEmail(email, imageURL);
     res.status(200).send("Email sent successfully");
   };
+
 }

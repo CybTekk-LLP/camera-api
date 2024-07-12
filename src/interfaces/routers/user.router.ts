@@ -10,6 +10,6 @@ const userRepository = getRepository(User);
 const userService = new UserService(userRepository);
 const userController = new UserController(userService);
 
-router.route("/").get(userController.getUserImages);
+router.route("/").get(userController.getExtractedImages);
 
 export default router;
