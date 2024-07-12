@@ -46,24 +46,21 @@ export class UploadsController {
       });
       await s3.send(command);
     }
-    try {
-      // Find the user by email
-      const user = await this.userService.getUserByEmail(email);
 
-      if (!user) {
-        return res.status(404).json({ error: "User not found." });
-      }
+    // const user = await this.userService.createteUser({
+    //   email: email,
+    //   images: [...urls],
+    // });
 
-      const updatedUser = await this.userService.updateUser(user.id, {
-        email: email,
-        images: [...(user.images || []), ...urls],
-      });
+    // if (!user) {
+    //   return res.status(404).json({ error: "User not found." });
+    // }
 
-      res.json({ urls });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal server error." });
-    }
+    // const updatedUser = await this.userService.updateUser(user.id, {
+    //   email: email,
+    //   images: [...(user.images || []), ...urls],
+    // });
+
     res.json({ uri: urls });
   };
 

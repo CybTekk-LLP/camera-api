@@ -5,7 +5,7 @@ export class UserService {
   constructor(private userRepository: GenericRepository<User>) {}
 
   async getImagesByEmail(email) {
-    const images = await this.userRepository.findOne({ email: email });
+    const images = await this.userRepository.findMany({ email: email });
     return images;
   }
 
@@ -15,6 +15,13 @@ export class UserService {
   }
   async updateUser(id, userData) {
     const user = await this.userRepository.findByIdAndUpdate(id, userData);
+    return user;
+  }
+  async createUser(email, imageUrl) {
+    const user = await this.userRepository.create({
+      email: email,
+      images: imageUrl,
+    });
     return user;
   }
 }
