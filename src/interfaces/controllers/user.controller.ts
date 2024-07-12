@@ -27,9 +27,12 @@ export class UserController {
       return 0;
     });
 
-    const lastExtractedUsers = sortedData.slice(0, 2);
+    const lastExtractedUsers = sortedData.slice(0 , 2);
     const lastExtractedImages = lastExtractedUsers.map((entry) => entry.images);
 
-    return res.status(200).json(lastExtractedImages);
+    return res.status(200).json({
+      newImage: lastExtractedImages[0],
+      previousImage: lastExtractedImages[1],
+    });
   };
 }

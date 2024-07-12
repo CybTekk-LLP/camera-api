@@ -24,4 +24,24 @@ export class UserService {
     });
     return user;
   }
+  async getExtractedImages(email) {
+    const images = await this.getImagesByEmail(email);
+    images.forEach((item) => {
+      if (typeof item.createdAt === "string") {
+        item.createdAt = new Date(item.createdAt);
+      }
+    });
+
+    const sortedData = images.sort((a, b) => {
+      if (a.createdAt && b.createdAt) {
+        return b.createdAt.getTime() - a.createdAt.getTime();
+      }
+      return 0;
+    });
+
+    const lastExtractedUsers = sortedData.slice(0, 2);
+    const lastExtractedImages = lastExtractedUsers.map((entry) => entry.images);
+
+    return lastExtractedImages;
+  }
 }

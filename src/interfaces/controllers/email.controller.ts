@@ -13,9 +13,11 @@ export class EmailController {
   sendEmail = async (req: Request, res: Response) => {
     const email = req.query.email.toString();
     const imageURL = req.query.imageUrl.toString();
-    await this.userService.createUser(email, imageURL);
-    await this.emailService.sendEmail(email, imageURL);
-    res.status(200).send("Email sent successfully");
-  };
 
+    await this.userService.createUser(email, imageURL);   //this create user-image 
+
+    const images = await this.userService.getExtractedImages(email);
+    await this.emailService.sendEmail(email, images);
+    res.status(200).json(images);
+  };
 }

@@ -28,7 +28,7 @@ export class EmailService {
     return await data.json();
   }
 
-  async sendEmail(recipientEmail: string, imageURL: string) {
+  async sendEmail(recipientEmail: string, images: string[]) {
     const url = "https://a.klaviyo.com/api/events/";
 
     const options = {
@@ -45,7 +45,8 @@ export class EmailService {
           attributes: {
             properties: {
               submit: "Yes",
-              imageURL: imageURL,
+              imageURL: images[0],
+              imagePre: images[1],
             },
 
             metric: {
@@ -65,8 +66,8 @@ export class EmailService {
                   },
                   email: `${recipientEmail}`,
                 },
-                imageURL:
-                  "https://d3k81ch9hvuctc.cloudfront.net/company/TWnsJV/images/e9c9c693-0df8-4954-8b6d-47af088b0fd1.jpeg",
+                imageURL: images[0],
+                imagePre: images[1],
               },
             },
           },
