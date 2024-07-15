@@ -39,7 +39,7 @@ export class UserService {
       return 0;
     });
 
-    const lastExtractedUsers = sortedData.slice(0, 2);
+    const lastExtractedUsers = sortedData.slice();
     const lastExtractedImages = lastExtractedUsers.map((entry) => entry.images);
 
     return lastExtractedImages;

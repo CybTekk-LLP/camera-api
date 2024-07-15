@@ -14,7 +14,7 @@ export class EmailController {
     const email = req.query.email.toString();
     const imageURL = req.query.imageUrl.toString();
 
-    await this.userService.createUser(email, imageURL);   //this create user-image 
+    await this.userService.createUser(email, imageURL); //this create user-image
 
     const images = await this.userService.getExtractedImages(email);
     await this.emailService.sendEmail(email, images);

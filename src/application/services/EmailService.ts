@@ -31,7 +31,19 @@ export class EmailService {
   async sendEmail(recipientEmail: string, images: string[]) {
     const url = "https://a.klaviyo.com/api/events/";
     const staticImage =
-      "https://images.pexels.com/photos/11421032/pexels-photo-11421032.jpeg";
+      "https://raw.githubusercontent.com/CybTekk-LLP/stoneTEKK-emails/main/window.png";
+    let imagePre = staticImage;
+    let imageNew = staticImage;
+
+    if (images.length === 1) {
+      imageNew = images[0];
+    } else if (images.length % 2 === 0) {
+      imagePre = images[images.length - 2];
+      imageNew = images[images.length - 1];
+    } else {
+      imageNew = images[images.length - 1];
+      imagePre = staticImage;
+    }
 
     const options = {
       method: "POST",
@@ -47,8 +59,8 @@ export class EmailService {
           attributes: {
             properties: {
               submit: "Yes",
-              imagePre: images.length % 2 == 0 ? images[1] : staticImage,
-              imageNew: images[0],
+              imagePre: imagePre,
+              imageNew: imageNew,
             },
 
             metric: {
@@ -68,8 +80,8 @@ export class EmailService {
                   },
                   email: `${recipientEmail}`,
                 },
-                imagePre: images[1],
-                imageNew: images[0],
+                imagePre: imagePre,
+                imageNew: imageNew,
               },
             },
           },
