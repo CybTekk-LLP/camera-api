@@ -3,9 +3,9 @@ import { BaseEntity } from "./BaseEntity";
 
 @Entity()
 export class User extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   email: string;
 
-  @Column({ array: true, type: "text" })
-  images: string[];
+  @Column({ nullable: true })
+  images: string;
 }

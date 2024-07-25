@@ -38,6 +38,11 @@
   },
   "scripts": {
     "dev": "node --watch --experimental-specifier-resolution=node --loader ./scripts/loader.js ./src/app.ts | pino-pretty",
-    "build": "tsc --project .; resolve-tspaths; fix-esm-import-path dist"
+    "build": "tsc --project .; resolve-tspaths; fix-esm-import-path dist",
+    "format": "prettier --plugin-search-dir . --write .",
+    "typeorm": "node --experimental-specifier-resolution=node --loader ./scripts/loader.js scripts/typeorm.custom-cli.ts ",
+    "generate-migrations": "npm run typeorm migration:generate -- ./src/infrastructure/migrations/migration -d ./src/infrastructure/database.config.ts",
+    "migrate": "npm run typeorm migration:run -- -d ./src/infrastructure/database.config.ts",
+    "generate-and-migrate": "npm run generate-migrations; npm run migrate"
   }
 }
