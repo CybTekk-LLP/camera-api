@@ -28,7 +28,7 @@ export class EmailService {
     return await data.json();
   }
 
-  async sendEmail(recipientEmail: string, images: string[]) {
+  async sendEmail(recipientEmail: string, images) {
     const url = "https://a.klaviyo.com/api/events/";
     const staticImage =
       "https://raw.githubusercontent.com/CybTekk-LLP/stoneTEKK-emails/main/window.png";
@@ -92,7 +92,6 @@ export class EmailService {
       .then((res) => res.json())
       .then((json) => {
         JSON.parse(json);
-        console.log("gvhnmk,km,l");
       })
       .catch((err) => console.error("error:" + err));
   }

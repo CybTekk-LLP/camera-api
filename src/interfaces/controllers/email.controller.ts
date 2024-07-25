@@ -17,6 +17,7 @@ export class EmailController {
     await this.userService.createUser(email, imageURL); //this create user-image
 
     const images = await this.userService.getExtractedImages(email);
+    console.log(images);
     await this.emailService.sendEmail(email, images);
     res.status(200).json(images);
   };

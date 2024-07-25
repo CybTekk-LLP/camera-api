@@ -24,6 +24,7 @@ export class UserService {
     });
     return user;
   }
+  
   async getExtractedImages(email) {
     const images = await this.getImagesByEmail(email);
     images.forEach((item) => {
