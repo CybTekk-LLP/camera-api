@@ -3,16 +3,16 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/images/Logo/Logo.svg" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="./images/Logo/Logo.svg" />
+  <link rel="stylesheet" href="./style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Camera app</title>
 
-  <link rel="modulepreload" href="/_app/immutable/entry/start.aGkSPuJZ.js" />
-  <link rel="modulepreload" href="/_app/immutable/chunks/entry.D7-KK50d.js" />
-  <link rel="modulepreload" href="/_app/immutable/chunks/scheduler.C7t7VQCU.js" />
-  <link rel="modulepreload" href="/_app/immutable/entry/app.BAq_9gpf.js" />
-  <link rel="modulepreload" href="/_app/immutable/chunks/index.BuEixCZg.js" />
+  <link rel="modulepreload" href="./_app/immutable/entry/start.aGkSPuJZ.js" />
+  <link rel="modulepreload" href="./_app/immutable/chunks/entry.D7-KK50d.js" />
+  <link rel="modulepreload" href="./_app/immutable/chunks/scheduler.C7t7VQCU.js" />
+  <link rel="modulepreload" href="./_app/immutable/entry/app.BAq_9gpf.js" />
+  <link rel="modulepreload" href="./_app/immutable/chunks/index.BuEixCZg.js" />
 </head>
 
 <body data-sveltekit-preload-data="hover">
@@ -26,8 +26,8 @@
         const element = document.currentScript.parentElement;
 
         Promise.all([
-          import("/_app/immutable/entry/start.aGkSPuJZ.js"),
-          import("/_app/immutable/entry/app.BAq_9gpf.js"),
+          import("./_app/immutable/entry/start.aGkSPuJZ.js"),
+          import("./_app/immutable/entry/app.BAq_9gpf.js"),
         ]).then(([kit, app]) => {
           kit.start(app, element);
         });
