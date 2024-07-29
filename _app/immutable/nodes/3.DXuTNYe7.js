@@ -166,8 +166,7 @@ function Ne(a) {
         o(e, "class", "modal-bg svelte-2mvxsa"),
           O(e, "show-filter", a[2]),
           o(i, "class", "cancel"),
-          j(i.src, (c = "../build/images/Preview/Cancel.svg")) ||
-            o(i, "src", c),
+          j(i.src, (c = "/images/Preview/Cancel.svg")) || o(i, "src", c),
           o(i, "alt", "alert"),
           ue(u, "text-align", "center"),
           ue(u, "margin", "10px auto 30px auto"),
@@ -322,7 +321,7 @@ function ke(a) {
     _,
     r,
     q =
-      '<img class="cancel" src="../build/images/Preview/Cancel.svg" alt="Dismiss Invite Card"/>',
+      '<img class="cancel" src="/images/Preview/Cancel.svg" alt="Dismiss Invite Card"/>',
     n,
     B;
   return {
@@ -625,8 +624,7 @@ function Je(a) {
     },
     h() {
       o(t, "draggable", "false"),
-        j(t.src, (l = "../build/images/Preview/EmptyState.svg")) ||
-          o(t, "src", l),
+        j(t.src, (l = "/images/Preview/EmptyState.svg")) || o(t, "src", l),
         o(t, "alt", "empty state"),
         o(t, "class", "svelte-19qbl8q"),
         o(i, "class", "svelte-19qbl8q"),
@@ -798,7 +796,7 @@ function ye(a) {
 function De(a) {
   let e,
     t =
-      '<img draggable="false" src="../build/images/Preview/Delete.svg" alt="delete"/>',
+      '<img draggable="false" src="/images/Preview/Delete.svg" alt="delete"/>',
     l,
     s;
   return {
@@ -826,8 +824,7 @@ function Qe(a) {
   let e,
     t,
     l,
-    s =
-      '<img draggable="false" src="../build/images/Preview/Back.svg" alt="back"/>',
+    s = '<img draggable="false" src="/images/Preview/Back.svg" alt="back"/>',
     i,
     c,
     f,
@@ -1046,7 +1043,7 @@ function $e(a, e, t) {
   Ae(() => {
     _ = Fe();
     const v = n.getContext("2d"),
-      L = w("../build/images/Preview/Prompt for first Email.svg", g),
+      L = w("/images/Preview/Prompt for first Email.svg", g),
       R = w(l[0], g),
       S = w(l[1], g),
       K = w(l[2], g);

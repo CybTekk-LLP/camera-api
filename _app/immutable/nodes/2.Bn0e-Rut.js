@@ -29,13 +29,13 @@ function W(f) {
     y,
     g,
     u =
-      '<input type="range" name="range" id="range" aria-label="Zoom Level"/> <img draggable="false" src="../build/images/Camera/trackMeter.svg" alt="zoom feature" class="svelte-1cpe0hi"/> <img draggable="false" class="slider svelte-1cpe0hi" src="../build/images/Camera/line.svg" alt="zoom slider"/> <p class="zoom-multiplier svelte-1cpe0hi" aria-live="polite"></p>',
+      '<input type="range" name="range" id="range" aria-label="Zoom Level"/> <img draggable="false" src="/images/Camera/trackMeter.svg" alt="zoom feature" class="svelte-1cpe0hi"/> <img draggable="false" class="slider svelte-1cpe0hi" src="/images/Camera/line.svg" alt="zoom slider"/> <p class="zoom-multiplier svelte-1cpe0hi" aria-live="polite"></p>',
     x,
     l,
     b,
     m,
     a =
-      '<img draggable="false" class="preview svelte-1cpe0hi" src="../build/images/Camera/rect.svg" height="48px" width="48px" alt="preview shot"/>',
+      '<img draggable="false" class="preview svelte-1cpe0hi" src="/images/Camera/rect.svg" height="48px" width="48px" alt="preview shot"/>',
     t,
     r,
     n =
@@ -201,8 +201,10 @@ function J(f, i, o) {
                 (d.max = e.zoom.max),
                 (d.step = e.zoom.step),
                 (d.value = p.zoom),
-                (document.querySelector(".zoom-multiplier").textContent =
-                  `${~~e.zoom.min}x ${~~(e.zoom.max + 3 * e.zoom.min) / 4}x ${~~(3 * e.zoom.max + e.zoom.min) / 4}x ${~~e.zoom.max}x`),
+                (document.querySelector(".zoom-multiplier").textContent = `${~~e
+                  .zoom.min}x ${~~(e.zoom.max + 3 * e.zoom.min) / 4}x ${
+                  ~~(3 * e.zoom.max + e.zoom.min) / 4
+                }x ${~~e.zoom.max}x`),
                 (d.oninput = function (C) {
                   c.applyConstraints({ advanced: [{ zoom: C.target.value }] }),
                     (document.querySelector(".slider").style.left =
