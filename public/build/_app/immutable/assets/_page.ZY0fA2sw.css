@@ -1,0 +1,95 @@
+#camera.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: relative;
+}
+video.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  inline-size: 100vw;
+  block-size: 85vh;
+  object-fit: cover;
+  object-position: center;
+}
+.controls.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  display: flex;
+  position: relative;
+  block-size: 100px;
+  inline-size: 90vw;
+  margin-inline: auto;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+.lenses.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+.lenses.svelte-1cpe0hi > .image.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: relative;
+}
+.lenses.svelte-1cpe0hi > .image.svelte-1cpe0hi > .preview.svelte-1cpe0hi {
+  object-fit: cover;
+  border-radius: 4px;
+  position: relative;
+  aspect-ratio: 1/1;
+  z-index: 1;
+}
+.switch-camera-facing-mode.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  cursor: pointer;
+  pointer-events: all;
+}
+.switch-camera-facing-mode.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi:has(
+    .rotating
+  ) {
+  pointer-events: none;
+}
+.switch-camera-facing-mode.svelte-1cpe0hi
+  .rotate.svelte-1cpe0hi.svelte-1cpe0hi {
+  cursor: pointer;
+}
+.switch-camera-facing-mode.svelte-1cpe0hi
+  .rotate.svelte-1cpe0hi.svelte-1cpe0hi:is(.rotating) {
+  animation: svelte-1cpe0hi-rotate 1.5s both;
+  transform-origin: 50% calc(50% + 1.1px);
+}
+@keyframes svelte-1cpe0hi-rotate {
+  0% {
+    rotate: 0deg;
+  }
+  to {
+    rotate: -180deg;
+  }
+}
+.capture-button.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+.capture-button.svelte-1cpe0hi .capture-icon.svelte-1cpe0hi.svelte-1cpe0hi {
+  transition: scale 0.2s ease-in-out;
+  transform-origin: center;
+}
+.range-container.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: absolute;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  inset-block-start: 72vh;
+  display: flex;
+  justify-content: center;
+  word-spacing: 15px;
+  visibility: hidden;
+}
+.zoom-multiplier.svelte-1cpe0hi.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: absolute;
+  inline-size: max-content;
+  color: #fff;
+  font-size: 10px;
+  translate: 0 18px;
+  pointer-events: none;
+}
+.range-container.svelte-1cpe0hi img.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: absolute;
+  pointer-events: none;
+}
+.range-container.svelte-1cpe0hi .slider.svelte-1cpe0hi.svelte-1cpe0hi {
+  position: absolute;
+  left: 3px;
+}
