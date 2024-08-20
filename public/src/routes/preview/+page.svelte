@@ -40,8 +40,8 @@
     });
     showToast = !!(await apiService.uploadGallery(files));
 
-    if (showToast && email) {
-      const sendEmail = await apiService.sendMail(email, imageurl);
+    if (showToast && name && email) {
+      const sendEmail = await apiService.sendMail(email, name, imageurl);
     }
   };
 

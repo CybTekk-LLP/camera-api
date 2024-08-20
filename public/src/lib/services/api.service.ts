@@ -52,10 +52,11 @@ export const uploadImageForEmail = async (
 
 export const sendMail = async (
   email: string,
+  name: string,
   imageurl: string
 ): Promise<string> => {
   const sendMailData = await api
-    .post(`/email?email=${email}&imageurl=${imageurl}`)
+    .post(`/email?email=${email}&name=${name}&imageurl=${imageurl}`)
     .catch((error) => {
       console.log(error);
     });
