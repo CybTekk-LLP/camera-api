@@ -131,7 +131,7 @@ export class EmailService {
     return await response.json();
   }
 
-  async sendEmail(recipientEmail: string, images) {
+  async sendEmail(recipientEmail: string, name, images) {
     const url = "https://a.klaviyo.com/api/events/";
     const staticImage =
       "https://raw.githubusercontent.com/CybTekk-LLP/stoneTEKK-emails/main/window.png";
@@ -182,7 +182,9 @@ export class EmailService {
                     submit: "Yes",
                   },
                   email: recipientEmail,
+                  first_name: name,
                 },
+                name,
                 imagePre,
                 imageNew,
               },
