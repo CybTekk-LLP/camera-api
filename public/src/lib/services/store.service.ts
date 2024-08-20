@@ -1,4 +1,4 @@
-import { email, images } from "$lib/stores/stores";
+import { email, images, name } from "$lib/stores/stores";
 import { get } from "svelte/store";
 
 /**
@@ -47,9 +47,8 @@ export const clearImages = (): void => {
   return images.set([]);
 };
 
-
 /**
- * get images
+ * get email
  *
  * @param void
  * @returns {string}
@@ -59,19 +58,47 @@ export const getEmail = (): string | undefined => {
 };
 
 /**
- * set images
+ * set email
  *
- * @param {string} _image
+ * @param {string} _email
  * @returns {void}
  */
-export const setEmail = (_image: string): void => {
-  return email.set(_image);
+export const setEmail = (_email: string): void => {
+  return email.set(_email);
 };
 /**
- * delete all images
+ * delete all email
  *
  * @returns {void}
  */
 export const clearEmail = (): void => {
   return email.set(undefined);
+};
+
+/**
+ * get name
+ *
+ * @param void
+ * @returns {string}
+ */
+export const getName = (): string | undefined => {
+  return get(name);
+};
+
+/**
+ * set name
+ *
+ * @param {string} _name
+ * @returns {void}
+ */
+export const setName = (_name: string): void => {
+  return name.set(_name);
+};
+/**
+ * delete all name
+ *
+ * @returns {void}
+ */
+export const clearName = (): void => {
+  return name.set(undefined);
 };

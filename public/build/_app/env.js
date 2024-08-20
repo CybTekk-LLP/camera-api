@@ -1,1 +1,1 @@
-export const env={"PUBLIC_BASE_URI":"http://192.168.1.2:1200/api"}
+export const env={"PUBLIC_BASE_URI":"https://beforeandafter.gushiv.com.au/api"}
