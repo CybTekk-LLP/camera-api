@@ -23,11 +23,15 @@
   }
 
   onMount(async () => {
-    let query = decodeURIComponent(
+    let queryEmail = decodeURIComponent(
       new URL($page.url).searchParams.get("email")
     );
-    storeService.setEmail(query);
-   
+    let queryName = decodeURIComponent(
+      new URL($page.url).searchParams.get("name")
+    );
+    storeService.setEmail(queryEmail);
+    storeService.setName(queryName);
+
     const streamWebCamVideo = (isFrontCamera = true) => {
       const video = document.getElementById("stream");
       const constraints = {

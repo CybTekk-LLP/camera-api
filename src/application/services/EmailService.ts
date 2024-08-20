@@ -131,7 +131,7 @@ export class EmailService {
     return await response.json();
   }
 
-  async sendEmail(recipientEmail: string, images) {
+  async sendEmail(recipientEmail: string, name: string, images) {
     const url = "https://a.klaviyo.com/api/events/";
     const staticImage =
       "https://raw.githubusercontent.com/CybTekk-LLP/stoneTEKK-emails/main/window.png";
@@ -142,10 +142,10 @@ export class EmailService {
     if (images.length === 1) {
       imageNew = images[0];
     } else if (images.length % 2 === 0) {
-      imagePre = images[images.length - 2];
-      imageNew = images[images.length - 1];
+      imagePre = images[1];
+      imageNew = images[0];
     } else {
-      imageNew = images[images.length - 1];
+      imageNew = images[0];
       imagePre = staticImage;
     }
 
@@ -182,9 +182,8 @@ export class EmailService {
                     submit: "Yes",
                   },
                   email: recipientEmail,
+                  first_name: name,
                 },
-                imagePre,
-                imageNew,
               },
             },
           },
@@ -195,7 +194,8 @@ export class EmailService {
     try {
       const response = await fetch(url, options);
       const jsonResponse = await response.json();
-      console.log("Email sent successfully:", jsonResponse);
+      console.log("Email sent successfully:");
+      return jsonResponse;
     } catch (error) {
       console.error("Error sending email:", error);
     }

@@ -12,6 +12,7 @@
   let showToast: boolean | undefined = undefined;
   let imageurl: string;
   let email: string | undefined = "";
+  let name: string | undefined = "";
 
   async function fetchBlob(blobUrl: string) {
     const response = await fetch(blobUrl);
@@ -38,9 +39,9 @@
       formData.append(`file${index + 1}`, file);
     });
     showToast = !!(await apiService.uploadGallery(files));
-  
-    if (showToast && email) {
-      const sendEmail = await apiService.sendMail(email, imageurl);
+
+    if (showToast && name && email) {
+      const sendEmail = await apiService.sendMail(email, name, imageurl);
     }
   };
 
@@ -52,6 +53,7 @@
   let canvas: HTMLCanvasElement;
   onMount(() => {
     email = storeService.getEmail();
+    name = storeService.getName();
     const ctx = canvas.getContext("2d");
     const img0 = loadImage("/images/Preview/Prompt for first Email.svg", main);
     const img1 = loadImage(images[0], main);
@@ -71,15 +73,19 @@
         ctx.font = "18px serif";
         ctx.fillStyle = "#75861B";
         ctx.textAlign = "center";
-        ctx.fillText((email?.toUpperCase() ?? "").replace(/@.*/, "") + "'s Images", canvas.width/2, 370);
+        ctx.fillText(
+          name?.split(" ")[0] ||
+            (email?.toUpperCase() ?? "").replace(/@.*/, "") + "'s Images",
+          canvas.width / 2,
+          370
+        );
         ctx.rotate(-0.23);
         ctx.drawImage(img1, 14.4, 171.5, 108, 117);
         ctx.rotate(0.22);
         ctx.drawImage(img2, 201, 136, 108, 117);
         ctx.rotate(0.226);
         ctx.drawImage(img3, 375, 62, 108, 117);
-       
-      
+
         let url = canvas.toDataURL("image/jpeg", 1.0);
         if (url) {
           imageurl = await apiService.uploadImageForEmail(url);
@@ -89,7 +95,7 @@
 
     function loadImage(
       src: string,
-      onload: ((this: GlobalEventHandlers, ev: Event) => any) | null,
+      onload: ((this: GlobalEventHandlers, ev: Event) => any) | null
     ) {
       const img = new Image();
       img.onload = onload;

@@ -45,8 +45,8 @@ const config = {
   ],
   kit: {
     adapter: staticAdapter({
-      pages: ".", // Default output directory, will be overridden by custom script
-      assets: ".", // Default output directory, will be overridden by custom script
+      pages: "build", // Default output directory, will be overridden by custom script
+      assets: "build", // Default output directory, will be overridden by custom script
       fallback: "index.html",
     }),
     files: {
