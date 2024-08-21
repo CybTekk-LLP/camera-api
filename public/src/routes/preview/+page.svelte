@@ -221,7 +221,10 @@
       padding-block: 20px;
       & > .post {
         text-decoration: none;
-        color: #b1cd46;
+        background-color: #b1cd46;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 2px;
       }
     }
     & > .image-slider {
